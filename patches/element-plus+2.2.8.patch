@@ -1,0 +1,25 @@
+diff --git a/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-month-range.mjs b/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-month-range.mjs
+index d3c8a7f..72e61b9 100644
+--- a/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-month-range.mjs
++++ b/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-month-range.mjs
+@@ -70,6 +70,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
+       if (maxDate.value === maxDate_ && minDate.value === minDate_) {
+         return;
+       }
++      emit("calendar-change", [minDate_.toDate(), maxDate_ && maxDate_.toDate()]);
+       maxDate.value = maxDate_;
+       minDate.value = minDate_;
+       if (!close)
+diff --git a/node_modules/element-plus/es/components/date-picker/src/props/panel-month-range.mjs b/node_modules/element-plus/es/components/date-picker/src/props/panel-month-range.mjs
+index 3d722a7..e48b32e 100644
+--- a/node_modules/element-plus/es/components/date-picker/src/props/panel-month-range.mjs
++++ b/node_modules/element-plus/es/components/date-picker/src/props/panel-month-range.mjs
+@@ -5,7 +5,7 @@ import { buildProps } from '../../../../utils/vue/props/runtime.mjs';
+ const panelMonthRangeProps = buildProps({
+   ...panelRangeSharedProps
+ });
+-const panelMonthRangeEmits = ["pick", "set-picker-option"];
++const panelMonthRangeEmits = ["pick", "calendar-change", "set-picker-option"];
+ 
+ export { panelMonthRangeEmits, panelMonthRangeProps };
+ //# sourceMappingURL=panel-month-range.mjs.map
