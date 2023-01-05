@@ -4,15 +4,19 @@
  */
 
 import { App } from 'vue';
-import { version } from '../package.json';
+const version = require('../package.json').version;
 import '../styles/element/index.scss';
-
+import {
+  DefaultProps,
+  useSetGlobalDefaultProps
+} from './hooks/use-default-props';
 import * as AllComponents from './components';
 
 // 所有组件列表
 const components = Object.values(AllComponents).map(i => i);
 
-const install = (app: App): void => {
+const install = (app: App, defaultProps: DefaultProps): void => {
+  useSetGlobalDefaultProps(defaultProps);
   components.map(component => {
     app.component(component.name, component);
   });
